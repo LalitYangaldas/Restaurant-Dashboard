@@ -17,7 +17,7 @@ const Dashboard = () => {
     max_hour: '',
   });
 
-  // ✅ Memoize fetchData so it only changes when filters change
+  
   const fetchData = useCallback(async () => {
     try {
       const restaurantsResponse = await getRestaurants(filters);
@@ -29,10 +29,10 @@ const Dashboard = () => {
     }
   }, [filters]); // ← fetchData depends on filters
 
-  // ✅ Now it's safe to include fetchData in the dependency array
+  
   useEffect(() => {
     fetchData();
-  }, [fetchData]); // ✅ Correct: runs when fetchData changes (i.e., when filters change)
+  }, [fetchData]); 
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
