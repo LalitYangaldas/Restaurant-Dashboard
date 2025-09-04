@@ -21,7 +21,7 @@ class RestaurantController extends Controller
             });
         }
 
-        // Sort (e.g., ?sort=name:asc)
+        // Sort
         if ($sort = $request->query('sort')) {
             [$field, $dir] = explode(':', $sort);
             $query->orderBy($field, $dir ?? 'asc');
@@ -40,9 +40,7 @@ class RestaurantController extends Controller
         return $query->paginate($request->query('per_page', 10));
     }
 
-    /**
-     * Get top 3 restaurants by revenue in a given date range with optional filters.
-     */
+
     public function topRevenue(Request $request)
     {
         // Append full time range for accurate day inclusion
