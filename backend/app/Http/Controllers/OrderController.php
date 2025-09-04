@@ -10,14 +10,14 @@ class OrderController extends Controller
 {
     public function trends(Request $request, $restaurantId)
     {
-        // Append time to ensure full day coverage: start at 00:00:00, end at 23:59:59
+        
         $startDate = $request->query('start_date', '2025-06-22') . ' 00:00:00';
         $endDate = $request->query('end_date', '2025-06-28') . ' 23:59:59';  
 
         $query = Order::where('restaurant_id', $restaurantId)
             ->whereBetween('order_time', [$startDate, $endDate]);
 
-        // Apply filters
+        // Applying filters
         if ($minAmount = $request->query('min_amount')) {
             $query->where('order_amount', '>=', $minAmount);
         }
