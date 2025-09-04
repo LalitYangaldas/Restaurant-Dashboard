@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Restaurant extends Model {
     use HasFactory;
 
-    protected $fillable = ['id', 'name', 'location', 'cuisine']; // Allow mass assignment of these fields
+    protected $fillable = ['id', 'name', 'location', 'cuisine']; 
 
     public function orders(): HasMany {
-        return $this->hasMany(Order::class); // Define the one-to-many relationship with orders
+        return $this->hasMany(Order::class); 
     }
 }
